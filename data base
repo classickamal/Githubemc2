@@ -1,0 +1,23 @@
+create database jdbcdemo;
+
+use jdbcdemo;
+ 
+ create table employee(
+ emp_id int primary key,
+ ename varchar(30),
+ salary int
+ );
+ 
+ insert into employee values (1,"kamal",100000);
+ insert into employee values (2,"Rishi",300000);
+ insert into employee values (3,"Ramya",200000);
+ 
+ select * from employee;
+ 
+ delimiter $$
+
+create procedure GetNameById(in id int,out empname varchar(40))
+begin
+   select ename from employee where emp_id=id into empname;
+end $$
+delimiter ;
